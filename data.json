@@ -1,0 +1,58 @@
+[
+  {
+    "id": "a4b4b467",
+    "recruiter": "\u041a\u043e\u0441\u0442\u044e\u0447\u0435\u043d\u043a\u043e",
+    "referral": {
+      "name": "\u0415\u0440\u043c\u043e\u043b\u0430\u0435\u0432 \u041e\u043b\u0435\u0433 \u0412\u0438\u043a\u0442\u043e\u0440\u043e\u0432\u0438\u0447",
+      "phone": "+79962795118",
+      "citizenship": "\u0420\u0424",
+      "city": "\u041c\u043e\u0441\u043a\u0432\u0430",
+      "dob": "07.10.2004"
+    },
+    "status": "checking",
+    "chat": [
+      {
+        "from": "admin",
+        "text": "\u0427\u0435 \u0434\u0435\u043b\u0430\u0435\u043c \u0441 \u044d\u0442\u043e\u0439 \u0430\u043d\u043a\u0435\u0442\u043e\u0439?"
+      },
+      {
+        "from": "admin",
+        "text": "\u042d\u0442\u043e \u0436\u0435\u0441\u0442\u043a\u043e \u0431\u0440\u0430\u0442\u0430\u043d"
+      }
+    ],
+    "deleted": false
+  },
+  {
+    "id": "af8ba1fd",
+    "recruiter": "\u0416\u0443\u043a\u043e\u0432",
+    "referral": {
+      "name": "\u0416\u0443\u043a\u043e\u0432",
+      "phone": "12313",
+      "citizenship": "\u0410\u043d\u0442\u043e\u043d",
+      "city": "\u0412\u0430\u0440",
+      "dob": "07 10 2004"
+    },
+    "status": "checking",
+    "chat": [],
+    "deleted": false
+  },
+  {
+    "id": "860752c9",
+    "recruiter": "h",
+    "referral": {
+      "name": "h",
+      "phone": "h",
+      "citizenship": "h",
+      "city": "h",
+      "dob": "h"
+    },
+    "status": "accepted",
+    "chat": [
+      {
+        "from": "admin",
+        "text": "\u041d\u0438\u0445\u0443\u044f \u0441\u0435\u0431\u0435"
+      }
+    ],
+    "deleted": false
+  }
+]

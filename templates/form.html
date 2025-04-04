@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Анкета</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>📋 Заполнить анкету</h2>
+
+    <div class="tabs">
+      <a href="/">📋 Заявка</a>
+      <a href="/home">🏢 О нас</a>
+      <a href="/recruiter_lookup">📁 Мои заявки</a>
+    </div>
+
+    {% if submitted %}
+      <div class="form-card">
+        <h3>✅ Заявка отправлена!</h3>
+        <p>Спасибо! Скоро с вами свяжется наш менеджер.</p>
+      </div>
+    {% else %}
+    <form method="POST" class="form-card">
+      <label>Фамилия рекрутера</label>
+      <input name="recruiter" required>
+
+      <label>ФИО</label>
+      <input name="name" required>
+
+      <label>Телефон</label>
+      <input name="phone" required>
+
+      <label>Гражданство</label>
+      <input name="citizenship" required>
+
+      <label>Город</label>
+      <input name="city" required>
+
+      <label>Дата рождения</label>
+      <input name="dob" required>
+
+      <button type="submit" class="btn">📩 Отправить</button>
+    </form>
+    {% endif %}
+  </div>
+</body>
+</html>

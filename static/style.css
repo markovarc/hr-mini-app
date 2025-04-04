@@ -1,0 +1,133 @@
+body {
+    font-family: "Roboto", sans-serif;
+    background: #f6f9fc;
+    color: #333;
+    padding: 30px;
+    margin: 0;
+}
+
+.container {
+    max-width: 700px;
+    margin: auto;
+}
+
+.form-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+label {
+    margin-top: 15px;
+    display: block;
+    font-weight: bold;
+}
+
+button.btn {
+    background: #4A90E2;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease;
+    margin-top: 10px;
+}
+
+button.btn:hover {
+    background: #3c7acb;
+}
+
+.tabs {
+    margin: 20px 0;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.tabs a {
+    text-decoration: none;
+    color: #4A90E2;
+    font-weight: bold;
+    border-bottom: 2px solid transparent;
+}
+
+.tabs a:hover {
+    border-color: #4A90E2;
+}
+
+.entry {
+    background: white;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 8px;
+    border-left: 6px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.entry.new { border-color: #2196f3; }
+.entry.checking { border-color: #ff9800; }
+.entry.accepted { border-color: #4caf50; }
+.entry.rejected {
+    border-color: #f44336;
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.chat {
+    background: #f0f0f0;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 15px;
+    font-size: 15px;
+    color: #4A90E2;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+
+    input, textarea {
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    button.btn {
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .tabs {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .tabs a {
+        font-size: 16px;
+    }
+}

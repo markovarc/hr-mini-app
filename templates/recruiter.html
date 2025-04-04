@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Мои заявки</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>👤 Рекрутер: {{ name }}</h2>
+
+    <div class="tabs">
+      <a href="/">📋 Заявка</a>
+      <a href="/home">🏢 О нас</a>
+      <a href="/recruiter_lookup">📁 Мои заявки</a>
+    </div>
+
+    <p><a href="/" class="back-link">⬅️ Назад</a></p>
+
+    <p>📊 Всего: {{ entries|length }}</p>
+    <p>✅ Одобрено: {{ entries|selectattr('status', 'equalto', 'accepted')|list|length }}</p>
+    <p>❌ Отклонено: {{ entries|selectattr('status', 'equalto', 'rejected')|list|length }}</p>
+
+    {% for e in entries %}
+    <div class="entry {{ e.status }}">
+      <strong>🆔 {{ e.id }}</strong><br>
+      <strong>ФИО:</strong> {{ e.referral.name }}<br>
+      <strong>Телефон:</strong> {{ e.referral.phone }}<br>
+      <strong>Гражданство:</strong> {{ e.referral.citizenship }}<br>
+      <strong>Город:</strong> {{ e.referral.city }}<br>
+      <strong>Дата рождения:</strong> {{ e.referral.dob }}<br>
+      <strong>📌 Статус:</strong> {{ e.status }}<br>
+
+      {% if e.status == 'new' %}
+      <form method="POST" action="/edit/{{ e.id }}">
+        <input name="name" value="{{ e.referral.name }}">
+        <input name="phone" value="{{ e.referral.phone }}">
+        <input name="citizenship" value="{{ e.referral.citizenship }}">
+        <input name="city" value="{{ e.referral.city }}">
+        <input name="dob" value="{{ e.referral.dob }}">
+        <button class="btn">✏️ Обновить</button>
+      </form>
+      <p><a href="/delete/{{ e.id }}">🗑 Удалить</a></p>
+      {% endif %}
+
+      <form action="/recruiter_comment/{{ e.id }}" method="POST">
+        <input name="msg" placeholder="Ваш комментарий">
+        <button>💬</button>
+      </form>
+
+      {% if e.chat %}
+      <div class="chat">
+        <strong>💬 Чат:</strong><br>
+        {% for c in e.chat %}
+          <b>{{ c.from }}:</b> {{ c.text }}<br>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Мои заявки</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>📁 Найти мои заявки</h2>
+
+    <div class="tabs">
+      <a href="/">📋 Заявка</a>
+      <a href="/home">🏢 О нас</a>
+      <a href="/recruiter_lookup">📁 Мои заявки</a>
+    </div>
+
+    <p><a href="/" class="back-link">⬅️ Назад</a></p>
+
+    <form action="/recruiter" method="GET" class="form-card">
+      <label>Введите свою фамилию (как указывали при заполнении анкеты)</label>
+      <input name="name" required placeholder="Например: Иванов">
+      <button type="submit" class="btn">🔍 Найти</button>
+    </form>
+  </div>
+</body>
+</html>
