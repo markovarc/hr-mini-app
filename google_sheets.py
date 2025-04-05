@@ -1,8 +1,13 @@
+import os
+import json
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-creds = ServiceAccountCredentials.from_json_keyfile_name("client_secret.json", scope)
+
+json_key = os.environ.get("CLIENT_SECRET_JSON")
+info = json.loads(json_key)
+creds = ServiceAccountCredentials.from_json_keyfile_dict(info, scope)
 client = gspread.authorize(creds)
 
 sheet_all = client.open("HR-All-Applications").sheet1
