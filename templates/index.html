@@ -1,34 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>Анкета</title>
-    <link rel="stylesheet" href="/static/style.css">
+  <meta charset="UTF-8">
+  <title>HR — Костюченко и Партнёры</title>
+  <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-    <div class="container">
-        <h2>📝 Анкета реферала</h2>
-        <form action="/submit" method="POST" class="form-card">
-            <label>Фамилия рекрутера</label>
-            <input name="recruiter" required>
+  <header>
+    <h1>🚀 HR Агенство — Костюченко и Партнёры</h1>
+    <p>Добро пожаловать! Заполните анкету, чтобы отправить кандидата</p>
+  </header>
 
-            <label>ФИО</label>
-            <input name="name" required>
-
-            <label>Телефон</label>
-            <input name="phone" required>
-
-            <label>Гражданство</label>
-            <input name="citizenship" required>
-
-            <label>Город</label>
-            <input name="city" required>
-
-            <label>Дата рождения</label>
-            <input name="dob" required>
-
-            <button type="submit" class="btn">📩 Отправить</button>
-        </form>
-    </div>
+  <main>
+    <form method="POST" action="/submit">
+      <input name="recruiter" placeholder="Ваша фамилия (рекрутер)" required>
+      <input name="name" placeholder="ФИО кандидата" required>
+      <input name="phone" placeholder="Телефон (в формате 7982...)" required>
+      <input name="citizenship" placeholder="Гражданство">
+      <input name="city" placeholder="Город">
+      <input name="dob" placeholder="Дата рождения (например 01.01.2000)">
+      <button type="submit">📨 Отправить заявку</button>
+    </form>
+  </main>
 </body>
 </html>

@@ -1,52 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>Админка</title>
-    <link rel="stylesheet" href="/static/style.css">
+  <meta charset="UTF-8">
+  <title>Админка — HR</title>
+  <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-    <h1>📊 Админ-панель</h1>
-    <div class="tabs">
-        <a href="/admin?tab=new">📥 Новые</a>
-        <a href="/admin?tab=checking">🔍 На проверке</a>
-        <a href="/admin?tab=accepted">✅ Одобрено</a>
-        <a href="/admin?tab=rejected">❌ Отклонено</a>
-        <a href="/admin?tab=trash">🧺 Корзина</a>
-        {% if tab == 'trash' %} <a href="/clear_trash">🧼 Очистить корзину</a> {% endif %}
+  <h1>👨‍💼 Админ-панель</h1>
+  {% for entry in entries %}
+    <div class="card">
+      <b>ID #{{ entry.id }}</b> — {{ entry.referral.name }} от <i>{{ entry.recruiter }}</i><br>
+      📱 {{ entry.referral.phone }} | 🏙 {{ entry.referral.city }} | 🎂 {{ entry.referral.dob }}
+      <p>Статус: <b>{{ entry.status }}</b> ({{ entry.created_at }})</p>
+
+      <form method="POST">
+        <input type="hidden" name="id" value="{{ entry.id }}">
+        <textarea name="comment" placeholder="Ответ рекрутеру..."></textarea><br>
+        <button name="action" value="checking">🕓 На проверке</button>
+        <button name="action" value="accept">✅ Принять</button>
+        <button name="action" value="reject">❌ Отклонить</button>
+      </form>
+
+      {% if entry.comments %}
+        <details>
+          <summary>💬 Чат</summary>
+          {% for c in entry.comments %}
+            <p><b>{{ c.role }}:</b> {{ c.text }}</p>
+          {% endfor %}
+        </details>
+      {% endif %}
     </div>
-
-    {% for e in entries %}
-    <div class="entry {{ e.status }}">
-        <strong>🆔 {{ e.id }}</strong><br>
-        <strong>👤 Рекрутер:</strong> {{ e.recruiter }}<br>
-        <strong>🙋‍♂️ ФИО:</strong> {{ e.referral.name }}<br>
-        <strong>📞 Телефон:</strong> {{ e.referral.phone }}<br>
-        <strong>🌍 Гражданство:</strong> {{ e.referral.citizenship }}<br>
-        <strong>🏙 Город:</strong> {{ e.referral.city }}<br>
-        <strong>🎂 Дата рождения:</strong> {{ e.referral.dob }}<br>
-
-        <p>
-            <a href="/status/{{ e.id }}/checking">🔄 Взять в работу</a> |
-            <a href="/status/{{ e.id }}/accepted">✅ Одобрить</a> |
-            <a href="/status/{{ e.id }}/rejected">❌ Отклонить</a> |
-            <a href="/delete/{{ e.id }}">🧺 Удалить</a>
-        </p>
-
-        <form action="/comment/{{ e.id }}" method="POST">
-            <input name="msg" placeholder="💬 Комментарий от админа" required>
-            <button>💬</button>
-        </form>
-
-        {% if e.chat %}
-        <div class="chat">
-            <strong>💬 Чат:</strong><br>
-            {% for c in e.chat %}
-                <b>{{ c.from }}:</b> {{ c.text }}<br>
-            {% endfor %}
-        </div>
-        {% endif %}
-    </div>
-    {% endfor %}
+  {% endfor %}
 </body>
 </html>
