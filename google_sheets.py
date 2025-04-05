@@ -1,17 +1,19 @@
 import os
 import json
 import gspread
-from oauth2client.service_account import ServiceAccountCredentials
+from google.oauth2.service_account import Credentials
 
-scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+scope = ["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive"]
 
-# Получаем JSON из переменной окружения
+# Загружаем JSON-ключ из переменной окружения
 json_key = os.environ.get("CLIENT_SECRET_JSON")
 info = json.loads(json_key)
 
-creds = ServiceAccountCredentials.from_json_keyfile_dict(info, scope)
+# Авторизация с помощью google-auth
+creds = Credentials.from_service_account_info(info, scopes=scope)
 client = gspread.authorize(creds)
 
+# Подключение к таблицам
 sheet_all = client.open("HR-All-Applications").sheet1
 sheet_approved = client.open("HR-Approved-Only").sheet1
 
